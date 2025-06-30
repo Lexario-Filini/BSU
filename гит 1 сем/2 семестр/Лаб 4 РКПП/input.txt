@@ -1,0 +1,3 @@
+gukov general 400
+petrov rabochiy 300
+
