@@ -12,36 +12,21 @@ public class MapMachine<T extends Identifiable> extends AbstractFunc<T> {
     public MapMachine(List<T> list) {
         this.list = list;
         this.map = new HashMap<>();
-        syncMap();
-    }
-
-    private void syncMap() {
-        map.clear();
-        for (T obj : list) {
-            map.put(obj.getId(), obj);
-        }
+        refreshMap();
     }
 
     @Override
     public void add(T obj) {
-        list.add(obj);
         map.put(obj.getId(), obj);
     }
 
     @Override
     public void update(int id, T obj) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId() == id) {
-                list.set(i, obj);
-                map.put(id, obj);
-                return;
-            }
-        }
+        map.put(id, obj);
     }
 
     @Override
     public void delete(int id) {
-        list.removeIf(o -> o.getId() == id);
         map.remove(id);
     }
 
@@ -54,7 +39,6 @@ public class MapMachine<T extends Identifiable> extends AbstractFunc<T> {
                 writer.write("---------------");
                 writer.newLine();
             }
-            System.out.println("Map save to file: " + filename);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,5 +62,16 @@ public class MapMachine<T extends Identifiable> extends AbstractFunc<T> {
     @Override
     public int getId() {
         return 0;
+    }
+
+    public void refreshMap() {
+        map.clear();
+        for (T obj : list) {
+            map.put(obj.getId(), obj);
+        }
+    }
+
+    public int getMapSize() {
+        return map.size();
     }
 }
