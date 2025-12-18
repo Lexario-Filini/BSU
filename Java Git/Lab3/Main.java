@@ -1,14 +1,17 @@
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         List<WashingMachine> sharedList = new ArrayList<>();
 
-        ListMachine<WashingMachine> listMachine = new ListMachine<>(sharedList);
         MapMachine<WashingMachine> mapMachine = new MapMachine<>(sharedList);
+        ListMachine<WashingMachine> listMachine = new ListMachine<>(sharedList);
 
-        Menu menu = new Menu(listMachine, mapMachine);
-        menu.start();
+        SwingUtilities.invokeLater(() -> {
+            GUIApplication gui = new GUIApplication(listMachine, mapMachine);
+            gui.setVisible(true);
+        });
     }
 }
