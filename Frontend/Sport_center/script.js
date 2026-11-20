@@ -538,11 +538,9 @@ class SportsCenter {
 }
 
 
-// Создание коллекции
 let center = new SportsCenter(ObjInf);
 
 
-// Проверка getObjs
 console.log("Все занятия:");
 console.log(center.getObjs());
 
@@ -553,7 +551,6 @@ console.log("Занятия, начиная с 6-го:");
 console.log(center.getObjs(5, 5));
 
 
-// Проверка фильтрации
 console.log("Занятия по йоге:");
 console.log(center.getObjs(0, 10, { activity: "Йога" }));
 
@@ -561,7 +558,6 @@ console.log("Занятия по адресу:");
 console.log(center.getObjs(0, 10, { address: "Абая, 120" }));
 
 
-// Проверка сортировки
 console.log("Сортировка по названию занятия:");
 console.log(center.getObjs(0, 10, {
     sortBy: "activity",
@@ -575,12 +571,10 @@ console.log(center.getObjs(0, 10, {
 }));
 
 
-// Проверка getObj
 console.log("Занятие с ID 3:");
 console.log(center.getObj("3"));
 
 
-// Проверка validateObj
 let newLesson = {
     id: "21",
     description: "Новое занятие по плаванию",
@@ -608,7 +602,6 @@ console.log(center.validateObj({
 }));
 
 
-// Проверка addObj
 console.log("Добавление нового занятия:");
 console.log(center.addObj(newLesson));
 
@@ -616,7 +609,6 @@ console.log("Количество занятий после добавления
 console.log(center.getCount());
 
 
-// Проверка editObj
 console.log("Изменение занятия:");
 console.log(center.editObj("1", {
     description: "Обновленная тренировка по фитнесу",
@@ -632,7 +624,6 @@ console.log(center.editObj("1", {
 }));
 
 
-// Проверка removeObj
 console.log("Удаление занятия с ID 2:");
 console.log(center.removeObj("2"));
 
@@ -640,7 +631,6 @@ console.log("Удаление несуществующего занятия:");
 console.log(center.removeObj("100"));
 
 
-// Проверка addAll
 let extraLessons = [
     {
         id: "22",
@@ -662,7 +652,6 @@ console.log("Добавление массива занятий:");
 console.log(center.addAll(extraLessons));
 
 
-// Проверка clear
 console.log("Очистка коллекции:");
 center.clear();
 
